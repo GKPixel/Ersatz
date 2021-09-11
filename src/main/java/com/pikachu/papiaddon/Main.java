@@ -9,12 +9,10 @@ import java.util.logging.Logger;
 public class Main extends JavaPlugin {
     private static Main instance;
     private static SkriptAddon addon;
-    private Logger log;
 
     public Main() {
         if (instance == null) {
             instance = this;
-            log = this.getLogger();
         } else {
             throw new IllegalStateException();
         }

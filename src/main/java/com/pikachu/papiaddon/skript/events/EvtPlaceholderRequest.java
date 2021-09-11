@@ -15,6 +15,7 @@ import com.pikachu.papiaddon.placeholderapi.PlaceholderAPIListener;
 import org.bukkit.entity.Player;
 import ch.njol.skript.registrations.EventValues;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.NotNull;
 
 @Name("On Placeholder Request")
 @Description("Called whenever a placeholder is requested")
@@ -46,7 +47,7 @@ public class EvtPlaceholderRequest extends SkriptEvent {
             Skript.error(prefix + " is not a valid placeholder", ErrorQuality.SEMANTIC_ERROR);
             return false;
         }
-        new PlaceholderAPIListener(Main.getInstance(), prefix).hook();
+        new PlaceholderAPIListener(Main.getInstance(), prefix).register();
         return true;
     }
 
@@ -56,8 +57,7 @@ public class EvtPlaceholderRequest extends SkriptEvent {
     }
 
     @Override
-    public String toString(Event e, boolean debug) {
+    public @NotNull String toString(Event e, boolean debug) {
         return "placeholder request" + (prefix != null ? ("with prefix \"" + prefix + "\"") : "");
     }
-
 }
